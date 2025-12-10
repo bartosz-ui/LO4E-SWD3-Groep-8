@@ -580,6 +580,14 @@ textarea {
   margin: 20px auto;
 }
 
+/* Left column stacks slideshow + rating vertically */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Slideshow styling */
 #slideshow {
   position: relative;
   width: 600px;
@@ -609,7 +617,35 @@ textarea {
   opacity: 1;
 }
 
+
+.rating-section {
+  border: 3px solid #eeb036;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #2a2a2a;
+  text-align: center;
+  width: 600px;
+}
+
+
 .game-info {
   padding: 15px;
   width: 400px;
+}
+
+.reviews-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+.review-box {
+  flex: 1; 
+  border: 3px solid #eeb036;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #2a2a2a;
+  text-align: center;
+  color: #ffffff;
 }
