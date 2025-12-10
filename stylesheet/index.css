@@ -564,6 +564,47 @@ textarea {
   --bg-dark-1: #6C6868;
   --bg-dark-2: #1A1919;
 
-  
 }
 
+#slideshow {
+            position: relative;
+            width: 400px;
+            height: 225px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 3px solid #eeb036;
+        }
+
+        #slideshow article,
+        #slideshow article img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        #slideshow article {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        #slideshow article.active {
+            opacity: 1;
+        }
+
+        .game-info {
+            border: 3px solid #eeb036;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #2a2a2a;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .game-info strong {
+            color: #ffffff;
+        }
