@@ -35,12 +35,42 @@
             </ul>
         </nav>
     </header>
-<?php 
+    <?php
+    $game1 = [
+        "titel" => "Marvel's Spider-Man 2",
+        "genres" => ["Action", "Adventure", "Open World"],
+        "fotos" => [
+            "spiderman2_1.jpg",
+            "spiderman2_2.jpg",
+            "spiderman2_3.jpg"
+        ],
+        "pegi" => 16,
+        "beschrijving" => "Marvel's Spider-Man 2 brengt Peter Parker en Miles Morales samen in een nieuw verhaal waarin ze New York beschermen tegen nieuwe en gevaarlijke vijanden zoals Venom en Kraven the Hunter.",
+        "rating" => 9.0,
+        "trailer" => "https://www.youtube.com/embed/bkBXqU3dP_0",
+        "platforms" => ["PlayStation 5"],
+        "maker" => "Insomniac Games"
+    ];
+    $game2 = [
+        "titel" => "Star Wars Battlefront",
+        "genres" => ["FPS", "Shooter", "Action", "Multiplayer"],
+        "fotos" => [
+            "battlefront_1.jpg",
+            "battlefront_2.jpg",
+            "battlefront_3.jpg"
+        ],
+        "pegi" => 16,
+        "beschrijving" => "Star Wars Battlefront is een multiplayer shooter waarin je iconische locaties uit het Star Wars-universum verkent en strijdt als trooper, pilot of hero. Grote veldslagen, voertuigen en authentieke Star Wars-ervaring staan centraal.",
+        "rating" => 7.5, 
+        "trailer" => "https://www.youtube.com/embed/Vt1x7jJ-Jw4",
+        "platforms" => ["PC", "PlayStation 4", "Xbox One"],
+        "maker" => "DICE (Electronic Arts)"
+    ];
 
-?>
+    ?>
 
 
 
 
 
-    </body>
+</body>
