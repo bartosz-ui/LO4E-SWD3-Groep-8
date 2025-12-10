@@ -101,6 +101,7 @@ echo '</section>';
 echo '</section>';
 echo `section class="rating-section">`;
 echo "<br><strong>Beschrijving:</strong><br>";
+
 echo `</section>`;
 ?>
 
@@ -122,3 +123,6 @@ setInterval(() => {
 }, 3000);
 
 </script>
+    <footer><p>© 2024 Gamestars. All rights reserved.</p></footer>
+</body>
+<html
