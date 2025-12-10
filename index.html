@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bartosz Zielinski">
+    <!-- font link code -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesheet/index.css">
+
+    <title>Gamestar</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html"><img src="images/logo.jpg" alt="logo" id="logoimg"></a>
+            <h3 id="logoname">Gamestars</h3>
+            <ul id="nav-links">
+                <li><a class="headerurls" href="gamesmodule.html">games</a></li>
+                <li><a class="headerurls" href="merchandise.html">merchandise</a></li>
+                <li><a class="headerurls" href="contacts.html">contact</a></li>
+                <li><a class="headerurls" href="reviews.html">reviews</a></li>
+                <li><input type="text" id="searchBar" placeholder="Search..." /></li>
+                <li><a href="register.html" id="register-button">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <p id="topgames">Top Games this year</p>
+    <article id="article1"><img src="images/dispatch.jpg" alt="dispatch" id="dispatch">
+        <section id="samenvating1">
+            <h2>dispatch</h2>
+            <p>The modern superhero genre,<br> with its real-world<br> heroes and corporate dynamics,<br>
+                is very complicated to manage, <br>even for those who work<br> with superheroes<br> every day.<br>
+                ​​To perfectly capture its nuances,<br> while also offering an<br>
+                original perspective</p>
+            <p>read more....</p>
+        </section>
+    </article>
+    <article id="article2"><img src="images/zelda.jpg" alt="zelda" id="zelda">
+        <section id="samenvating2">
+            <h2>zelda breath of the wild</h2>
+            <p>Few games will ever meet the high <br>expectations Breath of the Wild has set.<br>
+                The Switch 2 version is the<br> best way to play<br> an unforgettable title with better visuals<br>
+                and some neat new features.</p>
+            <P>read more....</P>
+        </section>
+    </article>
+    <article id="article3"><img src="images/elden-ring.jpg" alt="elden ring" id="elden-ring">
+        <section id="samenvating3">
+
+            <h2>elden Ring</h2>
+            <p>Elden Ring is simply a game that <br>the player naturally adapts<br> to their own style<br> of play.
+                Challenging at times,<br> vicious at others, but<br> mostly incredibly fun.<br>
+                The enjoyable pace makes the<br> hours of play pass by like water,<br>
+                and each path opens<br> up a few more.
+            <P>read more....</P>
+        </section>
+    </article>
+    <script>
+        const articles = document.querySelectorAll("article");
+        let index = 0;
+
+        function showArticle(i) {
+            articles.forEach(a => a.classList.remove("active"));
+            articles[i].classList.add("active");
+        }
+
+        showArticle(index);
+
+        setInterval(() => {
+            index = (index + 1) % articles.length;
+            showArticle(index);
+        }, 3000); 
+    </script>
+
+
+
+    <p id="newreleases">New Releases</p>
+    <hr class="line">
+    <section id="newimgs">
+
+        <img src="images/call-of-duty.jpg" alt="call-of-duty" id="call-of-duty">
+        <img src="images/arc-raiders.jpg" alt="arc-raiders" id="arc-raiders">
+        <img src="images/nioh3.jpg" alt="nioh3" id="nioh-3">
+        <img src="images/ride6.jpg" alt="ride6" id="ride-6">
+        <img src="images/ark.jpg" alt="ark survival evolved" id="ark">
+        <img src="images/jedi-survivor.jpg" alt="jedisurvivor" id="jedisurvivor">
+        <img src="images/powerwash2.jpg" alt="powerwash2" id="powerwash2">
+    </section>
+
+
+
+    <p id="upandcoming">Up and Coming</p>
+    <hr class="line">
+    <section id="upimgs">
+        <img src="images/darksouls.jpg" alt="darksouls" id="darksouls">
+        <img src="images/nfs-heat.jpg" alt="nfs-heat" id="nfs-heat">
+        <img src="images/nfs-unbound.jpg" alt="nfs-unbound" id="nfs-unbound">
+        <img src="images/wolverine.jpg" alt="wolverine" id="wolverine">
+        <img src="images/valorant.jpg" alt="valorant" id="valorant">
+        <img src="images/overwatch2.jpg" alt="overwatch2" id="overwatch2">
+        <img src="images/stardew-valley.jpg" alt="stardew-valley" id="stardew-valley">
+    </section>
+<footer><p>© 2024 Gamestars. All rights reserved.</p></footer>
+
+</body>
+
+</html>

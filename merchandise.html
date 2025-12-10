@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+       <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bartosz Zielinski">
+    <!-- font link code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Boldonse&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet\index.css">
+    <title>Gamestar</title>
+    <style>
+        .controls { gap:12px; }
+        .search-input{ padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.35); color:#fff; }
+        .badge { display:inline-block; background:var(--accent); color:#111; padding:6px 8px; border-radius:6px; font-weight:700; }
+        .product-meta{ display:flex; justify-content:space-between; align-items:center; gap:8px; }
+        .product-price{ color:var(--accent); font-weight:800; }
+        .cart-empty{ color:#bbb; }
+    </style>
+</head>
+<body>
+    <header>
+       <nav>
+            <a href="index.html"><img src="images/logo.jpg" alt="logo" id="logoimg"></a>
+            <h3 id="logoname">Gamestars</h3>
+            <ul id="nav-links">
+                <li><a id="headerurls" href="gamesmodule.html">games</a></li>
+                <li><a id="headerurls" href="merchandise.html">merchandise</a></li>
+                <li><a id="headerurls" href="contacts.html">contact</a></li>
+                <li><a id="headerurls" href="reviews.html">reviews</a></li>
+                <li><input type="text" id="searchBar" placeholder="Search..." /></li>
+                <li><a href="register.html" id="register-button">Register</a></li>
+                <img src="images/pegi16.png" alt="pegi16"  class="pegi16beau">
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="top-row">
+            <div>
+                <h1>Merchandise</h1>
+                <p class="lead">Bekijk en bestel officiële Gamestars-merchandise.</p>
+            </div>
+
+            <div class="controls">
+                <select id="sortSelect">
+                    <option value="default">Sorteer: Aanbevolen</option>
+                    <option value="price-asc">Prijs oplopend</option>
+                    <option value="price-desc">Prijs dalend</option>
+                </select>
+                <span class="badge" id="cartCount">0</span>
+            </div>
+        </div>
+
+        <section class="products-grid" id="productsGrid"></section>
+
+        <div id="cart">
+            <h4>Winkelwagen</h4>
+            <div id="cartItems"></div>
+            <p class="small">Totaal: <strong id="cartTotal">€0.00</strong></p>
+            <button id="checkoutBtn" class="btn">Afrekenen</button>
+        </div>
+    </main>
+
+    <script>
+        const PRODUCTS = [
+            { id: 1, title: 'Gamestars T-shirt', price: 19.99, img: 'images/merch1.jpg', meta: 'Katoen, unisex' },
+            { id: 2, title: 'Gamestars Hoodie', price: 39.99, img: 'images/merch2.jpg', meta: 'Warme fleece hoodie' },
+            { id: 3, title: 'Gamestars Muts', price: 12.50, img: 'images/merch3.jpg', meta: 'Gebreid, warm' },
+            { id: 4, title: 'Gamestars Mok', price: 8.75, img: 'images/merch4.jpg', meta: 'Keramiek, vaatwasmachinebestendig' },
+            { id: 5, title: 'Gamestars Poster', price: 6.00, img: 'images/merch5.jpg', meta: 'A3 print' },
+            { id: 6, title: 'Gamestars Sleutelhanger', price: 3.50, img: 'images/merch6.jpg', meta: 'Metaal, 5cm' }
+        ];
+
+        let cart = [];
+
+        function formatPrice(v){ return '€' + v.toFixed(2); }
+
+        function saveCart(){ localStorage.setItem('gs_cart', JSON.stringify(cart)); updateCartUI(); }
+        function loadCart(){ const raw = localStorage.getItem('gs_cart'); cart = raw ? JSON.parse(raw) : []; updateCartUI(); }
+
+        function renderProducts(list){
+            const grid = document.getElementById('productsGrid'); grid.innerHTML = '';
+            list.forEach(p => {
+                const div = document.createElement('div'); div.className = 'card';
+                div.innerHTML = `
+                    <img src="${p.img}" alt="${p.title}" onerror="this.style.background='#333';this.src='';" />
+                    <h3>${p.title}</h3>
+                    <div class="product-meta"><span class="meta">${p.meta}</span><span class="product-price">${formatPrice(p.price)}</span></div>
+                    <button class="btn" data-id="${p.id}">Voeg toe</button>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function addToCart(id){
+            const prod = PRODUCTS.find(p => p.id === id);
+            if(!prod) return;
+            const existing = cart.find(i => i.id === id);
+            if(existing) existing.qty++;
+            else cart.push({ id: prod.id, title: prod.title, price: prod.price, qty: 1 });
+            saveCart();
+        }
+
+        function removeFromCart(index){
+            if(index < 0 || index >= cart.length) return;
+            cart.splice(index, 1);
+            saveCart();
+        }
+
+        function changeQty(index, delta){
+            const item = cart[index]; if(!item) return;
+            item.qty += delta; if(item.qty < 1) item.qty = 1; saveCart();
+        }
+
+        function updateCartUI(){
+            const container = document.getElementById('cartItems');
+            container.innerHTML = '';
+            if(cart.length === 0){ container.innerHTML = '<p class="cart-empty">Winkelwagen is leeg</p>'; }
+            cart.forEach((it, idx) =>{
+                const el = document.createElement('div'); el.className = 'cart-item';
+                el.innerHTML = `
+                    <div>
+                        <div style="font-weight:700">${it.title}</div>
+                        <div class="small">${formatPrice(it.price)} x ${it.qty}</div>
+                    </div>
+                    <div>
+                        <button class="btn" data-action="inc" data-idx="${idx}">+</button>
+                        <button class="btn" data-action="dec" data-idx="${idx}" style="margin-left:6px">-</button>
+                        <button class="btn" data-action="rm" data-idx="${idx}" style="margin-left:6px;background:#444;color:#fff">Verwijder</button>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+            const total = cart.reduce((s,i)=> s + i.price * i.qty, 0);
+            document.getElementById('cartTotal').textContent = formatPrice(total);
+            document.getElementById('cartCount').textContent = cart.reduce((s,i)=> s + i.qty, 0);
+        }
+
+        document.addEventListener('click', (e)=>{
+            const t = e.target;
+            if(t.matches('.card .btn')){
+                const id = parseInt(t.getAttribute('data-id'));
+                if(!isNaN(id)) addToCart(id);
+            }
+            if(t.dataset && t.dataset.action){
+                const idx = parseInt(t.dataset.idx);
+                if(t.dataset.action === 'rm') removeFromCart(idx);
+                if(t.dataset.action === 'inc') changeQty(idx, 1);
+                if(t.dataset.action === 'dec') changeQty(idx, -1);
+            }
+        });
+
+        document.getElementById('sortSelect').addEventListener('change', (e)=>{
+            const v = e.target.value;
+            let list = [...PRODUCTS];
+            if(v === 'price-asc') list.sort((a,b)=> a.price - b.price);
+            if(v === 'price-desc') list.sort((a,b)=> b.price - a.price);
+            renderProducts(list);
+        });
+
+        document.getElementById('globalSearch').addEventListener('input', (e)=>{
+            const q = e.target.value.trim().toLowerCase();
+            const list = PRODUCTS.filter(p => p.title.toLowerCase().includes(q) || p.meta.toLowerCase().includes(q));
+            renderProducts(list);
+        });
+
+        document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+            if(cart.length === 0){ alert('Winkelwagen is leeg'); return; }
+            alert('Dit is een demo. In een echte app ga je nu naar de betaalpagina.');
+        });
+
+        // Init
+        renderProducts(PRODUCTS);
+        loadCart();
+    </script>
+</body>
+</html>

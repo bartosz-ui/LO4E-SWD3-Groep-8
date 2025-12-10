@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bartosz Zielinski">
+    <!-- font link code -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesheet/index.css">
+
+    <title>Gamestar</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html"><img src="images/logo.jpg" alt="logo" id="logoimg"></a>
+            <h3 id="logoname">Gamestars</h3>
+            <ul id="nav-links">
+                <li><a class="headerurls" href="gamesmodule.html">games</a></li>
+                <li><a class="headerurls" href="merchandise.html">merchandise</a></li>
+                <li><a class="headerurls" href="contacts.html">contact</a></li>
+                <li><a class="headerurls" href="reviews.html">reviews</a></li>
+                <li><input type="text" id="searchBar" placeholder="Search..." /></li>
+                <li><a href="register.html" id="register-button">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+      
+
+    <main>
+        <div class="card">
+            <h1>Contact</h1>
+            <p class="lead">Heb je vragen of wil je samenwerken? Vul het formulier in en we nemen zo snel mogelijk contact op.</p>
+
+            <div class="contact-grid">
+                <form id="contactForm" novalidate>
+                    <div class="field">
+                        <label for="name">Naam</label>
+                        <input id="name" name="name" type="text" placeholder="Je volledige naam" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">E-mailadres</label>
+                        <input id="email" name="email" type="email" placeholder="naam@voorbeeld.com" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="subject">Onderwerp</label>
+                        <input id="subject" name="subject" type="text" placeholder="Kort onderwerp" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="message">Bericht</label>
+                        <textarea id="message" name="message" placeholder="Schrijf je bericht hier..." required></textarea>
+                    </div>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-top:8px">
+                        <input id="subscribe" name="subscribe" type="checkbox">
+                        <label for="subscribe" class="small">Ontvang nieuws en aanbiedingen</label>
+                    </div>
+
+                    <div style="margin-top:14px">
+                        <button type="submit" class="btn">Verzenden</button>
+                    </div>
+                </form>
+
+                <aside class="info-box">
+                    <h4>Contactgegevens</h4>
+                    <p class="small">E-mail: <strong>info@gamestars.example</strong></p>
+                    <p class="small">Telefoon: <strong>+31 20 123 4567</strong></p>
+                    <p class="small">Adres: Gamestars Studio, Utrecht, Nederland</p>
+                    <hr style="border:none; border-top:1px solid rgba(255,255,255,0.06); margin:10px 0">
+                    <p class="small">We streven ernaar binnen 48 uur te reageren op berichten.</p>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if(!name || !email || !subject || !message){
+                alert('Vul alle verplichte velden in.');
+                return;
+            }
+
+           
+            if(!/^\S+@\S+\.\S+$/.test(email)){
+                alert('Voer een geldig e-mailadres in.');
+                return;
+            }
+
+           
+            alert('Dank! Je bericht is verzonden. We nemen snel contact op.');
+            form.reset();
+        });
+    </script>
+    <footer><p>© 2024 Gamestars. All rights reserved.</p></footer>
+</body>
+</html>
