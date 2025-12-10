@@ -28,103 +28,97 @@
             </ul>
         </nav>
     </header>
-    <?php
-    $games = [
-        "spiderman2" => [
-            "titel" => "Marvel's Spider-Man 2",
-            "genres" => ["Action", "Adventure", "Open World"],
-            "fotos" => ["images/spiderman2_1.jpg", "images/spiderman2_2.jpg", "images/spiderman2_3.jpg"],
-            "pegi" => 16,
-            "beschrijving" => "Peter Parker en Miles Morales beschermen New York tegen nieuwe vijanden.",
-            "rating" => 9.0,
-            "trailer" => "https://www.youtube.com/watch?v=9fVYKsEmuRo&pp=ygUbbWFydmVsIHNwaWRlciBtYW4gMiB0cmFpbGVy",
-            "platforms" => ["PlayStation 5"],
-            "maker" => "Insomniac Games"
-        ],
-        "battlefront" => [
-            "titel" => "Star Wars Battlefront",
-            "genres" => ["FPS", "Shooter", "Action", "Multiplayer"],
-            "fotos" => ["images/battlefront_1.jpg", "images/battlefront_2.jpg", "images/battlefront_3.jpg"],
-            "pegi" => 16,
-            "beschrijving" => "Multiplayer shooter in het Star Wars-universum.",
-            "rating" => 7.5,
-            "trailer" => "https://www.youtube.com/watch?v=V2xp-qtUlsQ&pp=ygUTYmF0dGxlZnJvbnQgdHJhaWxlcg%3D%3D",
-            "platforms" => ["PC", "PlayStation 4", "Xbox One"],
-            "maker" => "DICE (Electronic Arts)"
-        ]
-    ];
+<?php
+$games = [
+    "spiderman2" => [
+        "titel" => "Marvel's Spider-Man 2",
+        "genres" => ["Action", "Adventure", "Open World"],
+        "fotos" => ["images/spiderman2_1.jpg", "images/spiderman2_2.jpg", "images/spiderman2_3.jpg"],
+        "pegi" => 16,
+        "beschrijving" => "Peter Parker en Miles Morales beschermen New York tegen nieuwe vijanden.",
+        "rating" => 9.0,
+        "trailer" => "https://www.youtube.com/embed/9fVYKsEmuRo",
+        "platforms" => ["PlayStation 5"],
+        "maker" => "Insomniac Games"
+    ],
+    "battlefront" => [
+        "titel" => "Star Wars Battlefront",
+        "genres" => ["FPS", "Shooter", "Action", "Multiplayer"],
+        "fotos" => ["images/battlefront_1.jpg", "images/battlefront_2.jpg", "images/battlefront_3.jpg"],
+        "pegi" => 16,
+        "beschrijving" => "Multiplayer shooter in het Star Wars-universum.",
+        "rating" => 7.5,
+        "trailer" => "https://www.youtube.com/embed/V2xp-qtUlsQ",
+        "platforms" => ["PC", "PlayStation 4", "Xbox One"],
+        "maker" => "DICE (Electronic Arts)"
+    ]
+];
 
-    
-    $gekozenGame = "spiderman2"; 
-    $leeftijd = 16;
+$gekozenGame = "battlefront"; 
+$leeftijd = 16;
 
-    
-    switch ($gekozenGame) {
-        case "spiderman2":
-            $game = $games["spiderman2"];
-            break;
-        case "battlefront":
-            $game = $games["battlefront"];
-            break;
-        default:
-            echo "Deze game bestaat niet.";
-            
-    }
+switch ($gekozenGame) {
+    case "spiderman2":
+        $game = $games["spiderman2"];
+        break;
+    case "battlefront":
+        $game = $games["battlefront"];
+        break;
+    default:
+        echo "Deze game bestaat niet.";
+        exit;
+}
+
+if ($leeftijd < $game["pegi"]) {
+    echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
+    exit;
+}
+
+echo '<section class="game-container">';
+
+echo '<section id="slideshow">';
+foreach ($game["fotos"] as $foto) {
+    echo "<article><img src='{$foto}' alt='{$game['titel']}'></article>";
+}
+echo '</section>';
+
+echo '<section class="game-info">';
+echo "<h1>{$game['titel']}</h1>";
+echo "<strong>Genres:</strong><br>";
+foreach ($game["genres"] as $genre) {
+    echo "- {$genre}<br>";
+}
+echo "<br><strong>Platforms:</strong><br>";
+foreach ($game["platforms"] as $platform) {
+    echo "- {$platform}<br>";
+}
+echo "<br><strong>Beschrijving:</strong><br>";
+echo "{$game['beschrijving']}<br><br>";
+echo "<br><strong>Trailer:</strong><br>";
+echo "<iframe width='400' height='225' src='{$game['trailer']}'></iframe>";
+echo '</section>';
+
+echo '</section>';
+echo `section class="rating-section">`;
+echo "<br><strong>Beschrijving:</strong><br>";
+echo `</section>`;
+?>
 
 
-    if ($leeftijd < $game["pegi"]) {
-        echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
-        
-    }
+<script>
+const articles = document.querySelectorAll("#slideshow article");
+let index = 0;
 
-    
-    echo "<h1>{$game['titel']}</h1>";
+function showArticle(i) {
+    articles.forEach(a => a.classList.remove("active"));
+    articles[i].classList.add("active");
+}
 
-    
-    echo '<div id="slideshow">';
-    foreach ($game["fotos"] as $foto) {
-        echo "<article><img src='{$foto}' alt='{$game['titel']}'></article>";
-    }
-    echo '</div>';
+showArticle(index);
 
-    
-    echo '<div class="game-info">';
-    echo "<strong>Genres:</strong><br>";
-    foreach ($game["genres"] as $genre) {
-        echo "- {$genre}<br>";
-    }
+setInterval(() => {
+    index = (index + 1) % articles.length;
+    showArticle(index);
+}, 3000);
 
-    echo "<br><strong>Platforms:</strong><br>";
-    foreach ($game["platforms"] as $platform) {
-        echo "- {$platform}<br>";
-    }
-
-    echo "<br><strong>Beschrijving:</strong><br>";
-    echo "{$game['beschrijving']}<br><br>";
-
-    echo "<br><strong>Trailer:</strong><br>";
-    echo "<iframe width='400' height='225' src='{$game['trailer']}'></iframe>";
-    echo '</div>';
-    ?>
-
-    
-    <script>
-        const articles = document.querySelectorAll("#slideshow article");
-        let index = 0;
-
-        function showArticle(i) {
-            articles.forEach(a => a.classList.remove("active"));
-            articles[i].classList.add("active");
-        }
-
-        showArticle(index);
-
-        setInterval(() => {
-            index = (index + 1) % articles.length;
-            showArticle(index);
-        }, 3000); 
-    </script>
-
-</body>
-
-</html>
+</script>
