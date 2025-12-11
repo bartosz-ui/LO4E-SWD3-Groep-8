@@ -55,7 +55,7 @@
     ];
 
     $gekozenGame = "battlefront";
-    $leeftijd = 12;
+    $leeftijd = 16;
 
     switch ($gekozenGame) {
         case "spiderman2":
