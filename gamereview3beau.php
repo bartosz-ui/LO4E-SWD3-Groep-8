@@ -54,7 +54,7 @@ $games = [
 ];
 
 $gekozenGame = "mario_party";
-$leeftijd = 16;
+$leeftijd = 5;
 
 switch ($gekozenGame) {
     case "mario_party":
@@ -67,6 +67,7 @@ switch ($gekozenGame) {
 
 if ($leeftijd < $game["pegi"]) {
     echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
+    exit;
 }
 
 echo '<section class="game-container">';

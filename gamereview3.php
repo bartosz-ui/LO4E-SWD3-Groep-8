@@ -68,12 +68,10 @@
             echo "Deze game bestaat niet.";
             
     }
-
-    if ($leeftijd < $game["pegi"]) {
-        echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
-        
-    }
-
+if ($leeftijd < $game["pegi"]) {
+    echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
+    exit;
+}
 
     echo '<section class="game-container">';
     echo '<section class="left-column">';
