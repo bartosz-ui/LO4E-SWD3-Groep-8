@@ -101,10 +101,10 @@ function loadGame(gameKey) {
     }, 3000);
 }
 
-// start met de eerste game
+
 loadGame("spiderman2");
 
-// dropdown onchange event
+
 document.getElementById("gameSelect").addEventListener("change", function() {
     loadGame(this.value);
 });
