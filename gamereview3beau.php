@@ -53,7 +53,7 @@ $games = [
     ]
 ];
 
-$gekozenGame = "mario_party"; 
+$gekozenGame = "hokko_life"; 
 $leeftijd = 5;
 
 switch ($gekozenGame) {
