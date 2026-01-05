@@ -39,7 +39,12 @@
             "rating" => 9.0,
             "trailer" => "https://www.youtube.com/embed/9fVYKsEmuRo",
             "platforms" => ["PlayStation 5"],
-            "maker" => "Insomniac Games"
+            "maker" => "Insomniac Games",
+            "reviews" => [  
+                ["naam" => "Jan", "rating" => 5, "review" => "Geweldige game! De graphics en gameplay zijn top."],
+                ["naam" => "Lisa", "rating" => 4, "review" => "Leuke game, maar soms te makkelijk."],
+                ["naam" => "Tom", "rating" => 3, "review" => "Mooie open wereld, maar het verhaal stelt teleur."]
+            ]
         ],
         "battlefront" => [
             "titel" => "Star Wars Battlefront",
@@ -50,11 +55,17 @@
             "rating" => 7.5,
             "trailer" => "https://www.youtube.com/embed/V2xp-qtUlsQ",
             "platforms" => ["PC", "PlayStation 4", "Xbox One"],
-            "maker" => "DICE (Electronic Arts)"
+            "maker" => "DICE (Electronic Arts)",
+            "reviews" => [
+                ["naam" => "Sophie", "rating" => 4, "review" => "Leuke multiplayer, maar snel repetitief."],
+                ["naam" => "Mark", "rating" => 3, "review" => "Mooie graphics maar weinig nieuwe content."],
+                ["naam" => "Emma", "rating" => 5, "review" => "Ik ben groot Star Wars fan, deze game is fantastisch!"]
+            ]
         ]
     ];
 
-    $gekozenGame = "battlefront";
+
+    $gekozenGame = "spiderman2";
     $leeftijd = 16;
 
     switch ($gekozenGame) {
@@ -66,12 +77,11 @@
             break;
         default:
             echo "Deze game bestaat niet.";
-            
     }
-if ($leeftijd < $game["pegi"]) {
-    echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
-    exit;
-}
+    if ($leeftijd < $game["pegi"]) {
+        echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
+        exit;
+    }
 
     echo '<section class="game-container">';
     echo '<section class="left-column">';
@@ -79,18 +89,27 @@ if ($leeftijd < $game["pegi"]) {
     foreach ($game["fotos"] as $foto) {
         echo "<article><img src='{$foto}' alt='{$game['titel']}'></article>";
     }
-    
+
     echo '</section>';
 
     echo '<section class="rating-section">';
-    echo "<strong>Rating:</strong> {$game['rating']} / 10<br>";
-    echo "<strong>metascore:</strong> 85 / 100<br>";
-    echo "<strong>review</strong>";
-    echo "<p>It's not the most complex shooter, but it's the ideal pick-up-and-play experience for Star Wars fans. Stunning environments, solid shooting and immersive sound design mask the shortcomings. </p>";
+    echo '<section class="user-reviews">';
+    echo "<h3>Gebruikersreviews:</h3>";
+
+    foreach ($game["reviews"] as $rev) {
+        echo "<div class='review'>";
+        echo "<strong>{$rev['naam']}</strong> - Rating: {$rev['rating']}/5<br>";
+        echo "<p>{$rev['review']}</p>";
+        echo "</div><hr>";
+    }
+
     echo '</section>';
+
+        echo '</section>';
     echo '</section>';
     echo '<section class="game-info">';
     echo "<h1>{$game['titel']}</h1>";
+    echo "<strong>pegi:</strong>" . $games['spiderman2']['pegi'] . "</p>";
     echo "<strong>Genres:</strong><br>";
     foreach ($game["genres"] as $genre) {
         echo "- {$genre}<br>";
@@ -101,8 +120,12 @@ if ($leeftijd < $game["pegi"]) {
     }
     echo "<br><strong>Beschrijving:</strong><br>";
     echo "{$game['beschrijving']}<br><br>";
+    echo "<strong>Maker:</strong> {$game['maker']}<br><br>";
     echo "<br><strong>Trailer:</strong><br>";
     echo "<iframe width='400' height='225' src='{$game['trailer']}'></iframe>";
+    
+
+
     echo '</section>';
 
     echo '</section>';

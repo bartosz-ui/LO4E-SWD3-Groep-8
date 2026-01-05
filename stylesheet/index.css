@@ -617,34 +617,23 @@ textarea {
 }
 
 
-.rating-section {
-  border: 3px solid #eeb036;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #2a2a2a;
-  text-align: center;
-  width: 600px;
+
+
+
+.user-reviews {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 2px solid #333;
 }
-
-
-.game-info {
-  padding: 15px;
-  width: 400px;
+.review {
+    margin-bottom: 10px;
 }
-
-.reviews-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
+.review strong {
+    color: #0077cc;
 }
-
-
-.review-box {
-  flex: 1;
-  border: 3px solid #eeb036;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #2a2a2a;
-  text-align: center;
-  color: #ffffff;
+.review p {
+    margin: 5px 0 10px 0;
+}
+#gameSelect{
+ width: 30px;
 }
