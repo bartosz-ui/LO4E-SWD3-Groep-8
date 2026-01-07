@@ -616,24 +616,40 @@ textarea {
   opacity: 1;
 }
 
-
-
-
-
 .user-reviews {
-    margin-top: 20px;
-    padding: 10px;
-    border-top: 2px solid #333;
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 2px solid #333;
 }
+
 .review {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
+
 .review strong {
-    color: #0077cc;
+  color: #0077cc;
 }
+
 .review p {
-    margin: 5px 0 10px 0;
+  margin: 5px 0 10px 0;
 }
-#gameSelect{
- width: 30px;
+
+#gameSelect {
+  width: 30px;
+}
+
+#slideshow article {
+  display: none;
+}
+
+#slideshow article.active {
+  display: block;
+}
+
+.review {
+  margin-bottom: 10px;
+}
+
+.review strong {
+  color: #0077cc;
 }
