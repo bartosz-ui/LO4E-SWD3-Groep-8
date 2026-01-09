@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Bartosz Zielinski">
+    <meta name="author" content="beau">
     <!-- font link code -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap" rel="stylesheet">
+    <script src="pegi7review.js" defer></script>
     <link rel="stylesheet" href="stylesheet/index.css">
 
-    <title>Gamestar</title>
+    <title>Gamestar - PEGI 7 Reviews</title>
 </head>
 
 <body>
@@ -32,17 +30,26 @@
         </nav>
     </header>
 
-   
-        
-        <a href="gamereview3jsbart.html">gamereview3</a>
-    <a href="gamereview3.php">gamereview3php</a>
-    <a href="gamereview3beau.php">gamereview3beau</a>
-    <a href="pegi7review.html">PEGI 7 Reviews</a>
-     
+    <h2>PEGI 7 Game Reviews</h2>
+    <label for="gameSelect">Kies een game:</label>
+    <select id="gameSelect">
+        <option value="plantvszombies">Plants vs. Zombies</option>
+        <option value="skylandersgiants">Skylanders Giants</option>
+    </select>
+
+    
+    <section class="game-container">
+        <section class="left-column">
+            <section id="slideshow"></section>
+            <section id="ratingBox"></section>
+            <section id="userReviews"></section>
+        </section>
+        <section id="gameInfo" class="game-info"></section>
+    </section>
 
     <footer>
-    <p>© 2024 Gamestars. All rights reserved.</p>
-</footer>
-</body>
+        <p>© 2024 Gamestars. All rights reserved.</p>
+    </footer>
 
-                
+</body>
+</html>
