@@ -8,7 +8,7 @@
     <!-- font link code -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet/index.css">
-    <title>Gamestar - PEGI 7 Reviews (PHP)</title>
+    <title>Gamestar - PEGI 16 Reviews (PHP)</title>
 </head>
 
 <body>
@@ -28,46 +28,46 @@
         </nav>
     </header>
 
-    <h2>PEGI 7 Game Reviews (PHP)</h2>
+    <h2>PEGI 16 Game Reviews (PHP)</h2>
 
     <?php
     $games = [
-        "golfwithfriends" => [
-            "titel" => "Golf With Your Friends",
-            "genres" => ["Sports", "Party", "Multiplayer"],
-            "fotos" => ["images/placeholder.jpg"],
-            "pegi" => 7,
-            "beschrijving" => "Een humoristische golf game voor vrienden, vol chaos en plezier.",
-            "rating" => 8.0,
+        "arkse" => [
+            "titel" => "Ark: Survival Evolved",
+            "genres" => ["Survival", "Action", "Adventure", "Open World"],
+            "fotos" => ["images/ark.jpg"],
+            "pegi" => 16,
+            "beschrijving" => "Overleef op een mysterieus eiland vol dinosaurussen en bouw je eigen basis.",
+            "rating" => 8.5,
             "trailer" => "https://www.youtube.com/embed/example",
             "platforms" => ["PC", "PlayStation", "Xbox", "Nintendo Switch"],
-            "maker" => "Team17",
+            "maker" => "Studio Wildcard",
             "reviews" => [
-                ["naam" => "Piet", "rating" => 5, "review" => "Super grappig! Ideaal voor party's."],
-                ["naam" => "Anna", "rating" => 4, "review" => "Leuke levels, maar soms frustrerend."],
-                ["naam" => "Mark", "rating" => 5, "review" => "Verslavend en leuk met vrienden."]
+                ["naam" => "Jan", "rating" => 5, "review" => "Uitdagend en verslavend! Veel te ontdekken."],
+                ["naam" => "Lisa", "rating" => 4, "review" => "Leuke multiplayer, maar soms buggy."],
+                ["naam" => "Tom", "rating" => 5, "review" => "Fantastisch overlevingsspel."]
             ]
         ],
-        "jurassicworldlego" => [
-            "titel" => "Jurassic World Lego",
-            "genres" => ["Action", "Adventure", "Puzzle"],
-            "fotos" => ["images/placeholder.jpg"],
-            "pegi" => 7,
-            "beschrijving" => "Bouw en strijd in de wereld van Jurassic World met Lego blokken.",
-            "rating" => 7.5,
+        "darksouls" => [
+            "titel" => "Dark Souls",
+            "genres" => ["Action RPG", "Souls-like", "Challenging"],
+            "fotos" => ["images/darksouls.jpg"],
+            "pegi" => 16,
+            "beschrijving" => "Een uitdagende actie-RPG vol boss fights en mysteries in een donkere wereld.",
+            "rating" => 9.0,
             "trailer" => "https://www.youtube.com/embed/example",
-            "platforms" => ["PC", "PlayStation", "Xbox", "Nintendo Switch"],
-            "maker" => "TT Games",
+            "platforms" => ["PC", "PlayStation", "Xbox"],
+            "maker" => "FromSoftware",
             "reviews" => [
-                ["naam" => "Sophie", "rating" => 4, "review" => "Leuk voor kinderen, veel bouwplezier."],
-                ["naam" => "Jan", "rating" => 5, "review" => "Geweldig verhaal en humor."],
-                ["naam" => "Lisa", "rating" => 4, "review" => "Mooie graphics, maar soms repetitief."]
+                ["naam" => "Sophie", "rating" => 5, "review" => "Meesterwerk! Uitdagend maar bevredigend."],
+                ["naam" => "Mark", "rating" => 4, "review" => "Moeilijk, maar geweldig verhaal."],
+                ["naam" => "Emma", "rating" => 5, "review" => "Klassieker voor gamers."]
             ]
         ]
     ];
 
-    $gekozenGame = isset($_POST['game']) ? $_POST['game'] : "golfwithfriends";
-    $leeftijd = isset($_POST['leeftijd']) ? (int)$_POST['leeftijd'] : 10;
+    $gekozenGame = isset($_POST['game']) ? $_POST['game'] : "arkse";
+    $leeftijd = isset($_POST['leeftijd']) ? (int)$_POST['leeftijd'] : 16;
 
     if (!array_key_exists($gekozenGame, $games)) {
         echo "<p>Deze game bestaat niet.</p>";
@@ -91,8 +91,8 @@
         <br>
         <label for="game">Kies een game:</label>
         <select id="game" name="game">
-            <option value="golfwithfriends" <?php if ($gekozenGame == "golfwithfriends") echo "selected"; ?>>Golf With Your Friends</option>
-            <option value="jurassicworldlego" <?php if ($gekozenGame == "jurassicworldlego") echo "selected"; ?>>Jurassic World Lego</option>
+            <option value="arkse" <?php if ($gekozenGame == "arkse") echo "selected"; ?>>Ark: Survival Evolved</option>
+            <option value="darksouls" <?php if ($gekozenGame == "darksouls") echo "selected"; ?>>Dark Souls</option>
         </select>
         <br>
         <input type="submit" value="Laad Review">

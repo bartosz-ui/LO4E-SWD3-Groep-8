@@ -1,34 +1,34 @@
 let games = {
-    plantvszombies: {
-        titel: "Plants vs. Zombies",
-        genres: ["Tower Defense", "Strategy", "Puzzle"],
+    halo: {
+        titel: "Halo",
+        genres: ["FPS", "Action", "Sci-Fi"],
         fotos: ["images/placeholder.jpg"],
-        pegi: 7,
-        beschrijving: "Verdedig je huis tegen zombies met behulp van planten in deze leuke tower defense game.",
-        rating: 8.5,
+        pegi: 16,
+        beschrijving: "Een epische sci-fi shooter met Master Chief tegen aliens.",
+        rating: 9.5,
         trailer: "https://www.youtube.com/embed/example",
-        platforms: ["PC", "PlayStation", "Xbox", "Nintendo DS"],
-        maker: "PopCap Games",
+        platforms: ["PC", "Xbox", "PlayStation"],
+        maker: "Bungie / 343 Industries",
         reviews: [
-            { naam: "Kees", rating: 5, review: "Klassieker! Leuk voor alle leeftijden." },
-            { naam: "Marie", rating: 4, review: "Mooie graphics en strategie." },
-            { naam: "Henk", rating: 5, review: "Verslavend en grappig." }
+            { naam: "Alex", rating: 5, review: "Klassieker! Geweldig verhaal en gameplay." },
+            { naam: "Sara", rating: 4, review: "Leuke multiplayer, maar verhaal is oud." },
+            { naam: "Mike", rating: 5, review: "Master Chief forever!" }
         ]
     },
-    skylandersgiants: {
-        titel: "Skylanders Giants",
-        genres: ["Action", "Adventure", "Platformer"],
+    apexlegends: {
+        titel: "Apex Legends",
+        genres: ["Battle Royale", "FPS", "Multiplayer"],
         fotos: ["images/placeholder.jpg"],
-        pegi: 7,
-        beschrijving: "Speel als gigantische Skylanders in een avontuur vol actie en magie.",
-        rating: 8.0,
+        pegi: 16,
+        beschrijving: "Een battle royale shooter met unieke legendes en snelle actie.",
+        rating: 8.5,
         trailer: "https://www.youtube.com/embed/example",
-        platforms: ["PlayStation", "Xbox", "Wii", "Nintendo 3DS"],
-        maker: "Toys for Bob",
+        platforms: ["PC", "PlayStation", "Xbox", "Nintendo Switch"],
+        maker: "Respawn Entertainment",
         reviews: [
-            { naam: "Bas", rating: 4, review: "Leuk voor kinderen, veel actie." },
-            { naam: "Linda", rating: 5, review: "Fantastisch verhaal en personages." },
-            { naam: "Erik", rating: 4, review: "Goede multiplayer opties." }
+            { naam: "Jordan", rating: 4, review: "Verslavend! Goede squad mechanics." },
+            { naam: "Taylor", rating: 5, review: "Beter dan Fortnite, meer diepte." },
+            { naam: "Casey", rating: 4, review: "Leuke characters, maar soms unbalanced." }
         ]
     }
 };
@@ -103,4 +103,4 @@ document.getElementById("gameSelect").addEventListener("change", function() {
     loadGame(this.value);
 });
 
-loadGame("plantvszombies");
+loadGame("halo");
