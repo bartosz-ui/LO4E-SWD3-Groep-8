@@ -653,3 +653,37 @@ textarea {
 .review strong {
   color: #0077cc;
 }
+
+.review-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.review-box {
+  background-color: #444;
+  border: 2px solid #666;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.review-box:hover {
+  transform: scale(1.05);
+}
+
+.review-box a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.review-box a:hover {
+  color: #ffcc00;
+}
