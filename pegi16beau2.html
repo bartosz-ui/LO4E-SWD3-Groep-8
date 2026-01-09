@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Bartosz Zielinski">
     <!-- font link code -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap" rel="stylesheet">
+    <script src="pegi16beau2.js" defer></script>
     <link rel="stylesheet" href="stylesheet/index.css">
 
-    <title>Gamestar</title>
+    <title>Gamestar - PEGI 16 Reviews (JS)</title>
 </head>
 
 <body>
@@ -32,20 +30,26 @@
         </nav>
     </header>
 
-   
-        
-        <a href="gamereview3jsbart.html">gamereview3</a>
-    <a href="gamereview3.php">gamereview3php</a>
-    <a href="gamereview3beau.php">gamereview3beau</a>
-    <a href="pegi7review.html">PEGI 16 Reviews (JSbequ)</a>
-    <a href="pegi7review.php">PEGI 16 Reviews (PHPbeau)</a>
-    <a href="pegi16review.html">PEGI 16 Reviewsbeau2js</a>
-    <a href="pegi16review.php">PEGI 16 Reviewsbeau2php</a>
-     
+    <h2>PEGI 16 Game Reviews (JS)</h2>
+    <label for="gameSelect">Kies een game:</label>
+    <select id="gameSelect">
+        <option value="goldeneye">James Bond GoldenEye 007</option>
+        <option value="readyornot">Ready or Not</option>
+    </select>
+
+    <!-- Game container -->
+    <section class="game-container">
+        <section class="left-column">
+            <section id="slideshow"></section>
+            <section id="ratingBox"></section>
+            <section id="userReviews"></section>
+        </section>
+        <section id="gameInfo" class="game-info"></section>
+    </section>
 
     <footer>
-    <p>© 2024 Gamestars. All rights reserved.</p>
-</footer>
-</body>
+        <p>© 2024 Gamestars. All rights reserved.</p>
+    </footer>
 
-                
+</body>
+</html>
