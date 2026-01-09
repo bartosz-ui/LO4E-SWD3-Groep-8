@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Bartosz Zielinski">
+    <meta name="author" content="beau mensink">
     <!-- font link code -->
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap"
         rel="stylesheet">
-
+    <script src="gamereview3jsbart.js" defer></script>
     <link rel="stylesheet" href="stylesheet/index.css">
 
     <title>Gamestar</title>
@@ -31,25 +31,29 @@
             </ul>
         </nav>
     </header>
+    <label for="gameSelect">Kies een game:</label>
+    <select id="gameSelect">
+        <option value="spiderman2">Marvel's Spider-Man 2</option>
+        <option value="battlefront">Star Wars Battlefront</option>
+    </select>
 
-   
-        
-    <div class="review-links">
-        <div class="review-box"><a href="gamereview3jsbart.html">gamereview3</a></div>
-        <div class="review-box"><a href="gamereview3.php">gamereview3php</a></div>
-        <div class="review-box"><a href="gamereview3beau.php">gamereview3beau</a></div>
-        <div class="review-box"><a href="gamereview3bea.js">gamereview3beau</a></div>
-        <div class="review-box"><a href="pegi7review.php">gamereview4php (PHPbartosz)</a></div>
-        <div class="review-box"><a href="pegi7review.html">PEGI 16 Reviews (JSbartosz)</a></div>
-        <div class="review-box"><a href="pegi7review.php">PEGI 16 Reviews (PHPbartosz)</a></div>
-        <div class="review-box"><a href="pegi16review.html">PEGI 16 Reviewsbeau2js</a></div>
-        <div class="review-box"><a href="pegi16review.php">PEGI 16 Reviewsbeau2php</a></div>
-    </div>
-     
+    <!-- Game container -->
+    <section class="game-container">
+        <section class="left-column">
+            <section id="slideshow"></section>
+            <section id="ratingBox"></section>
+            <section id="userReviews"></section>
+        </section>
+        <section id="gameInfo" class="game-info"></section>
+    </section>
+
+
+
 
     <footer>
-    <p>© 2024 Gamestars. All rights reserved.</p>
-</footer>
+        <p>© 2024 Gamestars. All rights reserved.</p>
+    </footer>
+
 </body>
 
-                
+</html>
