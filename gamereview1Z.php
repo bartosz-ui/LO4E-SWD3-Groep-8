@@ -32,45 +32,45 @@
 
     <?php
    $games = [
-    "dark_souls_3" => [
-        "titel" => "Dark Souls III",
-        "genres" => ["Action RPG", "Soulslike", "Fantasy"],
+    "mario" => [
+        "titel" => "Super Mario Odyssey",
+        "genres" => ["Platform", "Adventure", "Family"],
         "fotos" => [
-            "darksouls3_1.jpg",
-            "darksouls3_2.jpg",
-            "darksouls3_3.jpg"
+            "mario1.jpg",
+            "mario2.jpg",
+            "mario3.jpg"
         ],
-        "pegi" => 16,
-        "beschrijving" => "Dark Souls III is een uitdagende action RPG waarin spelers een duistere en vervallen wereld verkennen vol gevaarlijke vijanden en epische eindbazen. De game staat bekend om zijn diepe lore, strakke combat en hoge moeilijkheidsgraad.",
-        "rating" => 9.5,
-        "trailer" => "https://www.youtube.com/embed/cWBwFhUv1-8",
-        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
-        "maker" => "FromSoftware",
+        "pegi" => 7,
+        "beschrijving" => "Super Mario Odyssey is een vrolijk platformavontuur waarin Mario de wereld rondreist met zijn trouwe Cappy. Verken diverse koninkrijken, verzamel moons en beleef epische avonturen vol humor en actie.",
+        "rating" => 9.8,
+        "trailer" => "https://www.youtube.com/embed/wGQHQc_3ycE",
+        "platforms" => ["Nintendo Switch"],
+        "maker" => "Nintendo",
         "reviews" => [
-            ["naam" => "Mark", "rating" => 5, "review" => "Een meesterwerk voor liefhebbers van uitdaging en sfeer."],
-            ["naam" => "Lisa", "rating" => 5, "review" => "Brutale moeilijkheid maar enorm bevredigend."],
-            ["naam" => "Tom", "rating" => 4, "review" => "Fantastische wereld en combat, maar niets voor beginners."]
+            ["naam" => "Anna", "rating" => 5, "review" => "Fantastisch spel voor het hele gezin!"],
+            ["naam" => "Piet", "rating" => 5, "review" => "Creatieve levels en leuke personages."],
+            ["naam" => "Sophie", "rating" => 4, "review" => "Veel plezier, maar soms uitdagend."]
         ]
     ],
 
-    "sekiro" => [
-        "titel" => "Sekiro: Shadows Die Twice",
-        "genres" => ["Action", "Adventure", "Soulslike"],
+    "stardew_valley" => [
+        "titel" => "Stardew Valley",
+        "genres" => ["Simulation", "RPG", "Farming"],
         "fotos" => [
-            "sekiro1.jpg",
-            "sekiro2.jpg",
-            "sekiro3.jpg"
+            "stardew1.jpg",
+            "stardew2.jpg",
+            "stardew3.jpg"
         ],
-        "pegi" => 18,
-        "beschrijving" => "Sekiro: Shadows Die Twice is een intense actiegame waarin je speelt als een shinobi in feodaal Japan. De focus ligt op snelle zwaardgevechten, timing en stealth, met een unieke combatstijl die draait om pareren.",
-        "rating" => 9.6,
-        "trailer" => "https://www.youtube.com/embed/rXMX4YJ7Lks",
-        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
-        "maker" => "FromSoftware",
+        "pegi" => 7,
+        "beschrijving" => "Stardew Valley is een ontspannend farmsim spel waarin je een boerderij beheert, relaties opbouwt met dorpelingen en avonturen beleeft in mijnen vol monsters.",
+        "rating" => 9.2,
+        "trailer" => "https://www.youtube.com/embed/ot7uXNQskhs",
+        "platforms" => ["PC", "PlayStation", "Xbox", "Nintendo Switch", "Mobile"],
+        "maker" => "ConcernedApe",
         "reviews" => [
-            ["naam" => "Jeroen", "rating" => 5, "review" => "Fantastische combat en prachtige setting."],
-            ["naam" => "Sanne", "rating" => 5, "review" => "Extreem moeilijk maar super bevredigend."],
-            ["naam" => "Kevin", "rating" => 4, "review" => "Niet voor iedereen, maar wel briljant."]
+            ["naam" => "Mark", "rating" => 5, "review" => "Ontspannend en verslavend!"],
+            ["naam" => "Lisa", "rating" => 5, "review" => "Perfecte mix van farming en avontuur."],
+            ["naam" => "Tom", "rating" => 4, "review" => "Leuk voor lange speelsessies."]
         ]
     ]
 ];
@@ -102,11 +102,11 @@
 
     <label for="game">Kies een game:</label>
     <select id="game" name="game">
-        <option value="dark_souls_3" <?php if ($gekozenGame == "dark_souls_3") echo "selected"; ?>>
-            Dark Souls III
+        <option value="mario" <?php if ($gekozenGame == "mario") echo "selected"; ?>>
+            Super Mario Odyssey
         </option>
-        <option value="sekiro" <?php if ($gekozenGame == "sekiro") echo "selected"; ?>>
-            Sekiro: Shadows Die Twice
+        <option value="stardew_valley" <?php if ($gekozenGame == "stardew_valley") echo "selected"; ?>>
+            Stardew Valley
         </option>
     </select>
     <br>
