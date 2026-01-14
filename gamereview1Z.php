@@ -31,40 +31,50 @@
     <h2>PEGI 7 Game Reviews (PHP)</h2>
 
     <?php
-    $games = [
-        "mario" => [
-            "titel" => "Super Mario Odyssey",
-            "genres" => ["Platformer", "Adventure", "Family"],
-            "fotos" => ["images/placeholder.jpg"],
-            "pegi" => 7,
-            "beschrijving" => "Een avontuurlijke platformer met Mario die de wereld rondreist.",
-            "rating" => 9.8,
-            "trailer" => "https://www.youtube.com/embed/example",
-            "platforms" => ["Nintendo Switch"],
-            "maker" => "Nintendo",
-            "reviews" => [
-                ["naam" => "Anna", "rating" => 5, "review" => "Geweldig voor alle leeftijden! Leuk en creatief."],
-                ["naam" => "Ben", "rating" => 5, "review" => "Mario is terug in topvorm."],
-                ["naam" => "Cathy", "rating" => 4, "review" => "Mooie graphics en leuke levels."]
-            ]
+   $games = [
+    "dark_souls_3" => [
+        "titel" => "Dark Souls III",
+        "genres" => ["Action RPG", "Soulslike", "Fantasy"],
+        "fotos" => [
+            "darksouls3_1.jpg",
+            "darksouls3_2.jpg",
+            "darksouls3_3.jpg"
         ],
-        "zelda" => [
-            "titel" => "The Legend of Zelda: Breath of the Wild",
-            "genres" => ["Action-Adventure", "Open World", "RPG"],
-            "fotos" => ["images/placeholder.jpg"],
-            "pegi" => 7,
-            "beschrijving" => "Een open wereld avontuur met Link in Hyrule.",
-            "rating" => 9.5,
-            "trailer" => "https://www.youtube.com/embed/example",
-            "platforms" => ["Nintendo Switch", "Wii U"],
-            "maker" => "Nintendo",
-            "reviews" => [
-                ["naam" => "David", "rating" => 5, "review" => "Vrijheid om te verkennen! Meesterwerk."],
-                ["naam" => "Eva", "rating" => 5, "review" => "Uitdagend en mooi."],
-                ["naam" => "Frank", "rating" => 4, "review" => "Leuke puzzels en actie."]
-            ]
+        "pegi" => 16,
+        "beschrijving" => "Dark Souls III is een uitdagende action RPG waarin spelers een duistere en vervallen wereld verkennen vol gevaarlijke vijanden en epische eindbazen. De game staat bekend om zijn diepe lore, strakke combat en hoge moeilijkheidsgraad.",
+        "rating" => 9.5,
+        "trailer" => "https://www.youtube.com/embed/cWBwFhUv1-8",
+        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
+        "maker" => "FromSoftware",
+        "reviews" => [
+            ["naam" => "Mark", "rating" => 5, "review" => "Een meesterwerk voor liefhebbers van uitdaging en sfeer."],
+            ["naam" => "Lisa", "rating" => 5, "review" => "Brutale moeilijkheid maar enorm bevredigend."],
+            ["naam" => "Tom", "rating" => 4, "review" => "Fantastische wereld en combat, maar niets voor beginners."]
         ]
-    ];
+    ],
+
+    "sekiro" => [
+        "titel" => "Sekiro: Shadows Die Twice",
+        "genres" => ["Action", "Adventure", "Soulslike"],
+        "fotos" => [
+            "sekiro1.jpg",
+            "sekiro2.jpg",
+            "sekiro3.jpg"
+        ],
+        "pegi" => 18,
+        "beschrijving" => "Sekiro: Shadows Die Twice is een intense actiegame waarin je speelt als een shinobi in feodaal Japan. De focus ligt op snelle zwaardgevechten, timing en stealth, met een unieke combatstijl die draait om pareren.",
+        "rating" => 9.6,
+        "trailer" => "https://www.youtube.com/embed/rXMX4YJ7Lks",
+        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
+        "maker" => "FromSoftware",
+        "reviews" => [
+            ["naam" => "Jeroen", "rating" => 5, "review" => "Fantastische combat en prachtige setting."],
+            ["naam" => "Sanne", "rating" => 5, "review" => "Extreem moeilijk maar super bevredigend."],
+            ["naam" => "Kevin", "rating" => 4, "review" => "Niet voor iedereen, maar wel briljant."]
+        ]
+    ]
+];
+
 
     $gekozenGame = isset($_POST['game']) ? $_POST['game'] : "mario";
     $leeftijd = isset($_POST['leeftijd']) ? (int)$_POST['leeftijd'] : 7;
@@ -86,17 +96,24 @@
     ?>
 
     <form method="post" action="">
-        <label for="leeftijd">Wat is je leeftijd?</label>
-        <input type="number" id="leeftijd" name="leeftijd" value="<?php echo $leeftijd; ?>" required>
-        <br>
-        <label for="game">Kies een game:</label>
-        <select id="game" name="game">
-            <option value="mario" <?php if ($gekozenGame == "mario") echo "selected"; ?>>Super Mario Odyssey</option>
-            <option value="zelda" <?php if ($gekozenGame == "zelda") echo "selected"; ?>>The Legend of Zelda: Breath of the Wild</option>
-        </select>
-        <br>
-        <input type="submit" value="Laad Review">
-    </form>
+    <label for="leeftijd">Wat is je leeftijd?</label>
+    <input type="number" id="leeftijd" name="leeftijd" value="<?php echo $leeftijd; ?>" required>
+    <br>
+
+    <label for="game">Kies een game:</label>
+    <select id="game" name="game">
+        <option value="dark_souls_3" <?php if ($gekozenGame == "dark_souls_3") echo "selected"; ?>>
+            Dark Souls III
+        </option>
+        <option value="sekiro" <?php if ($gekozenGame == "sekiro") echo "selected"; ?>>
+            Sekiro: Shadows Die Twice
+        </option>
+    </select>
+    <br>
+
+    <input type="submit" value="Laad Review">
+</form>
+
 
     <section class="game-container">
         <section class="left-column">
