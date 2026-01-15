@@ -72,7 +72,7 @@ $games = [
     ]
 ];
 
-$gekozenGame = "zelda_botw";
+$gekozenGame = "mario_galaxy";
 $leeftijd = 7;
 
 $game = $games[$gekozenGame];

@@ -6,7 +6,6 @@ header {
 }
 
 footer {
-  background-color: #2F2C2C;
   color: white;
   text-align: center;
   padding: 15px 0;
@@ -19,6 +18,8 @@ body {
   margin: 0px;
   padding: 0px;
   background: linear-gradient(to bottom, #6C6868, #1A1919);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   overflow-x: hidden;
   font-family: 'roboto', sans-serif;
   display: flex;

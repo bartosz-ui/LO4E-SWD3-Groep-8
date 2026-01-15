@@ -1,3 +1,4 @@
+
 let games = {
     scum: {
         titel: "SCUM",

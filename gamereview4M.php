@@ -28,44 +28,56 @@
             </ul>
         </nav>
     </header>
+
+    <h2>PEGI 16 Game Reviews (PHP)</h2>
+
+    <form method="get" action="">
+        <label for="game">Kies een game:</label>
+        <select id="game" name="game">
+            <option value="witcher3" <?php if ($gekozenGame == "witcher3") echo "selected"; ?>>The Witcher 3: Wild Hunt</option>
+            <option value="acvalhalla" <?php if ($gekozenGame == "acvalhalla") echo "selected"; ?>>Assassin's Creed Valhalla</option>
+        </select>
+        <input type="submit" value="Laad Review">
+    </form>
+
     <?php
     $games = [
-        "spiderman2" => [
-            "titel" => "Marvel's Spider-Man 2",
-            "genres" => ["Action", "Adventure", "Open World"],
-            "fotos" => ["images/spiderman2_1.jpg", "images/spiderman2_2.jpg", "images/spiderman2_3.jpg"],
+        "witcher3" => [
+            "titel" => "The Witcher 3: Wild Hunt",
+            "genres" => ["RPG", "Action", "Adventure", "Open World"],
+            "fotos" => ["images/witcher3_1.jpg", "images/witcher3_2.jpg", "images/witcher3_3.jpg"],
             "pegi" => 16,
-            "beschrijving" => "Peter Parker en Miles Morales beschermen New York tegen nieuwe vijanden.",
-            "rating" => 9.0,
-            "trailer" => "https://www.youtube.com/embed/9fVYKsEmuRo",
-            "platforms" => ["PlayStation 5"],
-            "maker" => "Insomniac Games",
+            "beschrijving" => "Een epische RPG waarin je als Geralt van Rivia monsters jaagt en keuzes maakt die de wereld beïnvloeden.",
+            "rating" => 9.5,
+            "trailer" => "https://www.youtube.com/embed/c0i88t0Kacs",
+            "platforms" => ["PC", "PlayStation 4", "Xbox One", "Nintendo Switch"],
+            "maker" => "CD Projekt Red",
             "reviews" => [
-                ["naam" => "Jan", "rating" => 5, "review" => "Geweldige game! De graphics en gameplay zijn top."],
-                ["naam" => "Lisa", "rating" => 4, "review" => "Leuke game, maar soms te makkelijk."],
-                ["naam" => "Tom", "rating" => 3, "review" => "Mooie open wereld, maar het verhaal stelt teleur."]
+                ["naam" => "GeraltFan", "rating" => 5, "review" => "Meesterwerk! Ongelooflijke wereld en verhaal."],
+                ["naam" => "Yennefer", "rating" => 5, "review" => "Diepe lore en geweldige keuzes."],
+                ["naam" => "Triss", "rating" => 4, "review" => "Fantastisch, maar soms overweldigend."]
             ]
         ],
-        "battlefront" => [
-            "titel" => "Star Wars Battlefront",
-            "genres" => ["FPS", "Shooter", "Action", "Multiplayer"],
-            "fotos" => ["images/battlefront_1.jpg", "images/battlefront_2.jpg", "images/battlefront_3.jpg"],
+        "acvalhalla" => [
+            "titel" => "Assassin's Creed Valhalla",
+            "genres" => ["Action", "RPG", "Adventure", "Open World"],
+            "fotos" => ["images/acvalhalla_1.jpg", "images/acvalhalla_2.jpg", "images/acvalhalla_3.jpg"],
             "pegi" => 16,
-            "beschrijving" => "Multiplayer shooter in het Star Wars-universum.",
-            "rating" => 7.5,
-            "trailer" => "https://www.youtube.com/embed/V2xp-qtUlsQ",
-            "platforms" => ["PC", "PlayStation 4", "Xbox One"],
-            "maker" => "DICE (Electronic Arts)",
+            "beschrijving" => "Speel als Eivor in de Vikingtijd, bouw je clan op en strijd tegen het Angelsaksische rijk.",
+            "rating" => 8.5,
+            "trailer" => "https://www.youtube.com/embed/ssrNcwxALS4",
+            "platforms" => ["PC", "PlayStation 4", "Xbox One", "PlayStation 5", "Xbox Series X"],
+            "maker" => "Ubisoft",
             "reviews" => [
-                ["naam" => "Sophie", "rating" => 4, "review" => "Leuke multiplayer, maar snel repetitief."],
-                ["naam" => "Mark", "rating" => 3, "review" => "Mooie graphics maar weinig nieuwe content."],
-                ["naam" => "Emma", "rating" => 5, "review" => "Ik ben groot Star Wars fan, deze game is fantastisch!"]
+                ["naam" => "Viking", "rating" => 5, "review" => "Epische gevechten en prachtige wereld."],
+                ["naam" => "Eivor", "rating" => 4, "review" => "Leuk verhaal, maar repetitieve quests."],
+                ["naam" => "Odin", "rating" => 4, "review" => "Goede graphics, maar bugs."]
             ]
         ]
     ];
 
 
-    $gekozenGame = $_GET["game"] ?? "spiderman2";
+    $gekozenGame = $_GET["game"] ?? "witcher3";
 
     if (!isset($games[$gekozenGame])) {
         echo "Deze game bestaat niet.";
@@ -96,11 +108,11 @@ if (isset($_POST["submitReview"])) {
     $leeftijd = 16;
 
     switch ($gekozenGame) {
-        case "spiderman2":
-            $game = $games["spiderman2"];
+        case "witcher3":
+            $game = $games["witcher3"];
             break;
-        case "battlefront":
-            $game = $games["battlefront"];
+        case "acvalhalla":
+            $game = $games["acvalhalla"];
             break;
         default:
             echo "Deze game bestaat niet.";
@@ -155,7 +167,7 @@ if (isset($_POST["submitReview"])) {
     echo '</section>';
     echo '<section class="game-info">';
     echo "<h1>{$game['titel']}</h1>";
-    echo "<strong>pegi:</strong>" . $games['spiderman2']['pegi'] . "</p>";
+    echo "<strong>pegi:</strong>" . $game['pegi'] . "</p>";
     echo "<strong>Genres:</strong><br>";
     foreach ($game["genres"] as $genre) {
         echo "- {$genre}<br>";
