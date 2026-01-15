@@ -1,37 +1,47 @@
 let games = {
-    mario: {
-        titel: "Super Mario Odyssey",
-        genres: ["Platformer", "Adventure", "Family"],
-        fotos: ["images/placeholder.jpg"],
-        pegi: 7,
-        beschrijving: "Een avontuurlijke platformer met Mario die de wereld rondreist.",
-        rating: 9.8,
-        trailer: "https://www.youtube.com/embed/example",
-        platforms: ["Nintendo Switch"],
-        maker: "Nintendo",
+    scum: {
+        titel: "SCUM",
+        genres: ["Survival", "Open World", "Multiplayer"],
+        fotos: [
+            "images/scum1.jpg",
+            "images/scum2.jpg",
+            "images/scum3.jpg"
+        ],
+        pegi: 18,
+        beschrijving: "SCUM is een hardcore survivalgame waarin spelers moeten overleven op een eiland vol gevaren, andere spelers en realistische gameplaymechanieken.",
+        rating: 8.2,
+        trailer: "https://www.youtube.com/embed/eYy3a2h3m4Y",
+        platforms: ["PC"],
+        maker: "Gamepires",
         reviews: [
-            { naam: "Anna", rating: 5, review: "Geweldig voor alle leeftijden! Leuk en creatief." },
-            { naam: "Ben", rating: 5, review: "Mario is terug in topvorm." },
-            { naam: "Cathy", rating: 4, review: "Mooie graphics en leuke levels." }
+            { naam: "Alex", rating: 4, review: "Zeer realistisch en uitdagend, niets voor casual spelers." },
+            { naam: "Brian", rating: 5, review: "Diepgaande survival mechanics, geweldig!" },
+            { naam: "Chris", rating: 3, review: "Leuk idee, maar nog wat bugs." }
         ]
     },
-    zelda: {
-        titel: "The Legend of Zelda: Breath of the Wild",
-        genres: ["Action-Adventure", "Open World", "RPG"],
-        fotos: ["images/placeholder.jpg"],
-        pegi: 7,
-        beschrijving: "Een open wereld avontuur met Link in Hyrule.",
-        rating: 9.5,
-        trailer: "https://www.youtube.com/embed/example",
-        platforms: ["Nintendo Switch", "Wii U"],
-        maker: "Nintendo",
+
+    need_for_speed_2: {
+        titel: "Need for Speed II",
+        genres: ["Racing", "Arcade"],
+        fotos: [
+            "images/nfs2_1.jpg",
+            "images/nfs2_2.jpg",
+            "images/nfs2_3.jpg"
+        ],
+        pegi: 3,
+        beschrijving: "Need for Speed II is een klassieke arcade racegame met exotische auto's en circuits over de hele wereld.",
+        rating: 7.8,
+        trailer: "https://www.youtube.com/embed/0Y2y4Kc7xJw",
+        platforms: ["PC", "PlayStation"],
+        maker: "Electronic Arts",
         reviews: [
-            { naam: "David", rating: 5, review: "Vrijheid om te verkennen! Meesterwerk." },
-            { naam: "Eva", rating: 5, review: "Uitdagend en mooi." },
-            { naam: "Frank", rating: 4, review: "Leuke puzzels en actie." }
+            { naam: "Dennis", rating: 4, review: "Pure nostalgie, geweldige soundtrack." },
+            { naam: "Eva", rating: 3, review: "Besturing is wat verouderd, maar nog steeds leuk." },
+            { naam: "Mark", rating: 4, review: "Klassieker die nooit verveelt." }
         ]
     }
 };
+
 
 let leeftijd = Number(prompt("Wat is je leeftijd?"));
 

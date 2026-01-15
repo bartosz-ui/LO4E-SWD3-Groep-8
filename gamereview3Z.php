@@ -29,127 +29,118 @@
         </nav>
     </header>
     <?php
-    $games = [
-        "spiderman2" => [
-            "titel" => "Marvel's Spider-Man 2",
-            "genres" => ["Action", "Adventure", "Open World"],
-            "fotos" => ["images/spiderman2_1.jpg", "images/spiderman2_2.jpg", "images/spiderman2_3.jpg"],
-            "pegi" => 16,
-            "beschrijving" => "Peter Parker en Miles Morales beschermen New York tegen nieuwe vijanden.",
-            "rating" => 9.0,
-            "trailer" => "https://www.youtube.com/embed/9fVYKsEmuRo",
-            "platforms" => ["PlayStation 5"],
-            "maker" => "Insomniac Games",
-            "reviews" => [  
-                ["naam" => "Jan", "rating" => 5, "review" => "Geweldige game! De graphics en gameplay zijn top."],
-                ["naam" => "Lisa", "rating" => 4, "review" => "Leuke game, maar soms te makkelijk."],
-                ["naam" => "Tom", "rating" => 3, "review" => "Mooie open wereld, maar het verhaal stelt teleur."]
-            ]
+$games = [
+    "dark_souls_3" => [
+        "titel" => "Dark Souls III",
+        "genres" => ["Action RPG", "Soulslike", "Fantasy"],
+        "fotos" => [
+            "images/darksouls3_1.jpg",
+            "images/darksouls3_2.jpg",
+            "images/darksouls3_3.jpg"
         ],
-        "battlefront" => [
-            "titel" => "Star Wars Battlefront",
-            "genres" => ["FPS", "Shooter", "Action", "Multiplayer"],
-            "fotos" => ["images/battlefront_1.jpg", "images/battlefront_2.jpg", "images/battlefront_3.jpg"],
-            "pegi" => 16,
-            "beschrijving" => "Multiplayer shooter in het Star Wars-universum.",
-            "rating" => 7.5,
-            "trailer" => "https://www.youtube.com/embed/V2xp-qtUlsQ",
-            "platforms" => ["PC", "PlayStation 4", "Xbox One"],
-            "maker" => "DICE (Electronic Arts)",
-            "reviews" => [
-                ["naam" => "Sophie", "rating" => 4, "review" => "Leuke multiplayer, maar snel repetitief."],
-                ["naam" => "Mark", "rating" => 3, "review" => "Mooie graphics maar weinig nieuwe content."],
-                ["naam" => "Emma", "rating" => 5, "review" => "Ik ben groot Star Wars fan, deze game is fantastisch!"]
-            ]
+        "pegi" => 16,
+        "beschrijving" => "Dark Souls III is een duistere en uitdagende action RPG waarin spelers een vervallen wereld verkennen vol gevaarlijke vijanden en epische eindbazen.",
+        "trailer" => "https://www.youtube.com/embed/cWBwFhUv1-8",
+        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
+        "maker" => "FromSoftware",
+        "reviews" => [
+            ["naam" => "Mark", "rating" => 5, "review" => "Een meesterwerk voor liefhebbers van uitdaging."],
+            ["naam" => "Lisa", "rating" => 5, "review" => "Zwaar maar enorm bevredigend."],
+            ["naam" => "Tom", "rating" => 4, "review" => "Fantastische sfeer en combat."]
         ]
-    ];
+    ],
 
+    "sekiro" => [
+        "titel" => "Sekiro: Shadows Die Twice",
+        "genres" => ["Action", "Adventure", "Soulslike"],
+        "fotos" => [
+            "images/sekiro1.jpg",
+            "images/sekiro2.jpg",
+            "images/sekiro3.jpg"
+        ],
+        "pegi" => 18,
+        "beschrijving" => "Sekiro: Shadows Die Twice is een intense actiegame waarin je speelt als een shinobi in feodaal Japan.",
+        "trailer" => "https://www.youtube.com/embed/rXMX4YJ7Lks",
+        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
+        "maker" => "FromSoftware",
+        "reviews" => [
+            ["naam" => "Jeroen", "rating" => 5, "review" => "De beste combat ooit."],
+            ["naam" => "Sanne", "rating" => 5, "review" => "Extreem moeilijk maar geweldig."],
+            ["naam" => "Kevin", "rating" => 4, "review" => "Niet voor beginners, wel briljant."]
+        ]
+    ]
+];
 
-    $gekozenGame = "spiderman2";
-    $leeftijd = 16;
+$gekozenGame = "dark_souls_3";
+$leeftijd = 16;
 
-    switch ($gekozenGame) {
-        case "spiderman2":
-            $game = $games["spiderman2"];
-            break;
-        case "battlefront":
-            $game = $games["battlefront"];
-            break;
-        default:
-            echo "Deze game bestaat niet.";
-    }
-    if ($leeftijd < $game["pegi"]) {
-        echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.<br>";
-        exit;
-    }
+$game = $games[$gekozenGame];
 
-    echo '<section class="game-container">';
-    echo '<section class="left-column">';
-    echo '<section id="slideshow">';
-    foreach ($game["fotos"] as $foto) {
-        echo "<article><img src='{$foto}' alt='{$game['titel']}'></article>";
-    }
+if ($leeftijd < $game["pegi"]) {
+    echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.";
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestars</title>
+    <link rel="stylesheet" href="stylesheet/index.css">
+</head>
 
-    echo '</section>';
+<body>
 
-    echo '<section class="rating-section">';
-    echo '<section class="user-reviews">';
-    echo "<h3>Gebruikersreviews:</h3>";
+<section class="game-container">
+    <section class="left-column">
+        <section id="slideshow">
+            <?php foreach ($game["fotos"] as $foto) echo "<article><img src='$foto'></article>"; ?>
+        </section>
 
-    foreach ($game["reviews"] as $rev) {
-        echo "<div class='review'>";
-        echo "<strong>{$rev['naam']}</strong> - Rating: {$rev['rating']}/5<br>";
-        echo "<p>{$rev['review']}</p>";
-        echo "</div><hr>";
-    }
+        <section class="user-reviews">
+            <h3>Gebruikersreviews:</h3>
+            <?php
+            foreach ($game["reviews"] as $rev) {
+                echo "<div class='review'>";
+                echo "<strong>{$rev['naam']}</strong> - {$rev['rating']}/5";
+                echo "<p>{$rev['review']}</p>";
+                echo "</div><hr>";
+            }
+            ?>
+        </section>
+    </section>
 
-    echo '</section>';
+    <section class="game-info">
+        <h1><?= $game['titel'] ?></h1>
+        <strong>PEGI:</strong> <?= $game['pegi'] ?><br>
 
-        echo '</section>';
-    echo '</section>';
-    echo '<section class="game-info">';
-    echo "<h1>{$game['titel']}</h1>";
-    echo "<strong>pegi:</strong>" . $games['spiderman2']['pegi'] . "</p>";
-    echo "<strong>Genres:</strong><br>";
-    foreach ($game["genres"] as $genre) {
-        echo "- {$genre}<br>";
-    }
-    echo "<br><strong>Platforms:</strong><br>";
-    foreach ($game["platforms"] as $platform) {
-        echo "- {$platform}<br>";
-    }
-    echo "<br><strong>Beschrijving:</strong><br>";
-    echo "{$game['beschrijving']}<br><br>";
-    echo "<strong>Maker:</strong> {$game['maker']}<br><br>";
-    echo "<br><strong>Trailer:</strong><br>";
-    echo "<iframe width='400' height='225' src='{$game['trailer']}'></iframe>";
-    
+        <strong>Genres:</strong><br>
+        <?php foreach ($game["genres"] as $genre) echo "- $genre<br>"; ?>
 
+        <br><strong>Platforms:</strong><br>
+        <?php foreach ($game["platforms"] as $platform) echo "- $platform<br>"; ?>
 
-    echo '</section>';
+        <br><strong>Beschrijving:</strong><br>
+        <?= $game['beschrijving'] ?><br><br>
 
-    echo '</section>';
-    ?>
+        <strong>Maker:</strong> <?= $game['maker'] ?><br><br>
 
-    <script>
-        const articles = document.querySelectorAll("#slideshow article");
-        let index = 0;
+        <strong>Trailer:</strong><br>
+        <iframe width="400" height="225" src="<?= $game['trailer'] ?>"></iframe>
+    </section>
+</section>
 
-        function showArticle(i) {
-            articles.forEach(a => a.classList.remove("active"));
-            articles[i].classList.add("active");
-        }
+<script>
+const articles = document.querySelectorAll("#slideshow article");
+let index = 0;
+articles[0].classList.add("active");
 
-        showArticle(index);
+setInterval(() => {
+    articles[index].classList.remove("active");
+    index = (index + 1) % articles.length;
+    articles[index].classList.add("active");
+}, 3000);
+</script>
 
-        setInterval(() => {
-            index = (index + 1) % articles.length;
-            showArticle(index);
-        }, 3000);
-    </script>
-
-    <footer>
-        <p>© 2024 Gamestars. All rights reserved.</p>
-    </footer>
 </body>
-<html
+</html>

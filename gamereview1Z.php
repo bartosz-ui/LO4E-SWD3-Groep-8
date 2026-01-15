@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Beau">
+    <meta name="author" content="Bartosz Zielinski">
     <!-- font link code -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Boldonse&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet/index.css">
@@ -28,134 +28,110 @@
         </nav>
     </header>
 
-    <h2>PEGI 7 Game Reviews (PHP)</h2>
 
-    <?php
-   $games = [
-    "dark_souls_3" => [
-        "titel" => "Dark Souls III",
-        "genres" => ["Action RPG", "Soulslike", "Fantasy"],
+   <?php
+$games = [
+    "mario_galaxy" => [
+        "titel" => "Super Mario Galaxy",
+        "genres" => ["Platformer", "Adventure", "Family"],
         "fotos" => [
-            "darksouls3_1.jpg",
-            "darksouls3_2.jpg",
-            "darksouls3_3.jpg"
+            "images/mariogalaxy1.jpg",
+            "images/mariogalaxy2.jpg",
+            "images/mariogalaxy3.jpg"
         ],
-        "pegi" => 16,
-        "beschrijving" => "Dark Souls III is een uitdagende action RPG waarin spelers een duistere en vervallen wereld verkennen vol gevaarlijke vijanden en epische eindbazen. De game staat bekend om zijn diepe lore, strakke combat en hoge moeilijkheidsgraad.",
-        "rating" => 9.5,
-        "trailer" => "https://www.youtube.com/embed/cWBwFhUv1-8",
-        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
-        "maker" => "FromSoftware",
+        "pegi" => 7,
+        "beschrijving" => "Super Mario Galaxy is een kleurrijke platformgame waarin Mario door verschillende sterrenstelsels reist om Princess Peach te redden.",
+        "trailer" => "https://www.youtube.com/embed/rmN8DHZYNCg",
+        "platforms" => ["Nintendo Wii", "Nintendo Switch"],
+        "maker" => "Nintendo",
         "reviews" => [
-            ["naam" => "Mark", "rating" => 5, "review" => "Een meesterwerk voor liefhebbers van uitdaging en sfeer."],
-            ["naam" => "Lisa", "rating" => 5, "review" => "Brutale moeilijkheid maar enorm bevredigend."],
-            ["naam" => "Tom", "rating" => 4, "review" => "Fantastische wereld en combat, maar niets voor beginners."]
+            ["naam" => "Anna", "rating" => 5, "review" => "Magisch en tijdloos. Een van de beste Mario-games ooit."],
+            ["naam" => "Bram", "rating" => 5, "review" => "Fantastisch leveldesign en muziek."],
+            ["naam" => "Clara", "rating" => 4, "review" => "Heel leuk voor jong en oud."]
         ]
     ],
 
-    "sekiro" => [
-        "titel" => "Sekiro: Shadows Die Twice",
-        "genres" => ["Action", "Adventure", "Soulslike"],
+    "zelda_botw" => [
+        "titel" => "The Legend of Zelda: Breath of the Wild",
+        "genres" => ["Action-Adventure", "Open World", "RPG"],
         "fotos" => [
-            "sekiro1.jpg",
-            "sekiro2.jpg",
-            "sekiro3.jpg"
+            "images/zelda1.jpg",
+            "images/zelda2.jpg",
+            "images/zelda3.jpg"
         ],
-        "pegi" => 18,
-        "beschrijving" => "Sekiro: Shadows Die Twice is een intense actiegame waarin je speelt als een shinobi in feodaal Japan. De focus ligt op snelle zwaardgevechten, timing en stealth, met een unieke combatstijl die draait om pareren.",
-        "rating" => 9.6,
-        "trailer" => "https://www.youtube.com/embed/rXMX4YJ7Lks",
-        "platforms" => ["PlayStation 4", "Xbox One", "PC"],
-        "maker" => "FromSoftware",
+        "pegi" => 7,
+        "beschrijving" => "Breath of the Wild is een open-wereld avontuur waarin Link het koninkrijk Hyrule verkent en zijn eigen pad kiest.",
+        "trailer" => "https://www.youtube.com/embed/zw47_q9wbBE",
+        "platforms" => ["Nintendo Switch", "Wii U"],
+        "maker" => "Nintendo",
         "reviews" => [
-            ["naam" => "Jeroen", "rating" => 5, "review" => "Fantastische combat en prachtige setting."],
-            ["naam" => "Sanne", "rating" => 5, "review" => "Extreem moeilijk maar super bevredigend."],
-            ["naam" => "Kevin", "rating" => 4, "review" => "Niet voor iedereen, maar wel briljant."]
+            ["naam" => "David", "rating" => 5, "review" => "Vrijheid zoals nooit tevoren. Meesterwerk."],
+            ["naam" => "Eva", "rating" => 5, "review" => "Prachtige wereld en geweldige gameplay."],
+            ["naam" => "Finn", "rating" => 4, "review" => "Zeer goed, maar soms lastig."]
         ]
     ]
 ];
 
+$gekozenGame = "zelda_botw";
+$leeftijd = 7;
 
-    $gekozenGame = isset($_POST['game']) ? $_POST['game'] : "mario";
-    $leeftijd = isset($_POST['leeftijd']) ? (int)$_POST['leeftijd'] : 7;
+$game = $games[$gekozenGame];
 
-    if (!array_key_exists($gekozenGame, $games)) {
-        echo "<p>Deze game bestaat niet.</p>";
-        exit;
-    }
+if ($leeftijd < $game["pegi"]) {
+    echo "Je bent helaas te jong voor deze game. PEGI: {$game['pegi']}.";
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestars</title>
+    <link rel="stylesheet" href="stylesheet/index.css">
+</head>
 
-    $game = $games[$gekozenGame];
+<body>
 
-    if ($leeftijd < $game["pegi"]) {
-        echo "<h2>Niet toegestaan</h2>";
-        echo "<p>PEGI: {$game['pegi']}</p>";
-        echo "<p>Jouw leeftijd: {$leeftijd}</p>";
-        echo "<p>Je bent niet oud genoeg om deze game te bekijken.</p>";
-        exit;
-    }
-    ?>
-
-    <form method="post" action="">
-    <label for="leeftijd">Wat is je leeftijd?</label>
-    <input type="number" id="leeftijd" name="leeftijd" value="<?php echo $leeftijd; ?>" required>
-    <br>
-
-    <label for="game">Kies een game:</label>
-    <select id="game" name="game">
-        <option value="dark_souls_3" <?php if ($gekozenGame == "dark_souls_3") echo "selected"; ?>>
-            Dark Souls III
-        </option>
-        <option value="sekiro" <?php if ($gekozenGame == "sekiro") echo "selected"; ?>>
-            Sekiro: Shadows Die Twice
-        </option>
-    </select>
-    <br>
-
-    <input type="submit" value="Laad Review">
-</form>
-
-
-    <section class="game-container">
-        <section class="left-column">
-            <section id="slideshow">
-                <?php
-                foreach ($game["fotos"] as $foto) {
-                    echo "<article><img src='{$foto}' alt='{$game['titel']}'></article>";
-                }
-                ?>
-            </section>
-            <section id="userReviews">
-                <h3>Gebruikersreviews:</h3>
-                <?php
-                foreach ($game["reviews"] as $rev) {
-                    echo "<div class='review'>";
-                    echo "<strong>{$rev['naam']}</strong> - Rating: {$rev['rating']}/5<br>";
-                    echo "{$rev['review']}";
-                    echo "</div><hr>";
-                }
-                ?>
-            </section>
+<section class="game-container">
+    <section class="left-column">
+        <section id="slideshow">
+            <?php foreach ($game["fotos"] as $foto) echo "<article><img src='$foto'></article>"; ?>
         </section>
-        <section id="gameInfo" class="game-info">
-            <h1><?php echo $game['titel']; ?></h1>
-            <strong>PEGI:</strong> <?php echo $game['pegi']; ?><br>
-            <strong>Genres:</strong><br>
+
+        <section class="user-reviews">
+            <h3>Gebruikersreviews:</h3>
             <?php
-            foreach ($game["genres"] as $genre) {
-                echo "- {$genre}<br>";
+            foreach ($game["reviews"] as $rev) {
+                echo "<div class='review'>";
+                echo "<strong>{$rev['naam']}</strong> - {$rev['rating']}/5";
+                echo "<p>{$rev['review']}</p>";
+                echo "</div><hr>";
             }
             ?>
-            <br><strong>Platforms:</strong><br>
-            <?php
-            foreach ($game["platforms"] as $platform) {
-                echo "- {$platform}<br>";
-            }
-            ?>
-            <br><strong>Beschrijving:</strong><br><?php echo $game['beschrijving']; ?><br>
-            <strong>Maker:</strong> <?php echo $game['maker']; ?><br>
-            <br><strong>Trailer:</strong><br><iframe width='400' height='225' src='<?php echo $game['trailer']; ?>'></iframe>
         </section>
     </section>
+
+    <section class="game-info">
+        <h1><?= $game['titel'] ?></h1>
+        <strong>PEGI:</strong> <?= $game['pegi'] ?><br>
+
+        <strong>Genres:</strong><br>
+        <?php foreach ($game["genres"] as $genre) echo "- $genre<br>"; ?>
+
+        <br><strong>Platforms:</strong><br>
+        <?php foreach ($game["platforms"] as $platform) echo "- $platform<br>"; ?>
+
+        <br><strong>Beschrijving:</strong><br>
+        <?= $game['beschrijving'] ?><br><br>
+
+        <strong>Maker:</strong> <?= $game['maker'] ?><br><br>
+
+        <strong>Trailer:</strong><br>
+        <iframe width="400" height="225" src="<?= $game['trailer'] ?>"></iframe>
+    </section>
+</section>
+
+</body>
 
     <script>
         const articles = document.querySelectorAll("#slideshow article");
