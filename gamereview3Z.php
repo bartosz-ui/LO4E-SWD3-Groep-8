@@ -34,9 +34,9 @@ $games = [
         "titel" => "Dark Souls III",
         "genres" => ["Action RPG", "Soulslike", "Fantasy"],
         "fotos" => [
-            "images/darksouls3_1.jpg",
-            "images/darksouls3_2.jpg",
-            "images/darksouls3_3.jpg"
+            "images\darksoals3_1.jpg",
+            "images\darksoals3_2.jpg",
+            "images\darksoals3_3.jpg"
         ],
         "pegi" => 16,
         "beschrijving" => "Dark Souls III is een duistere en uitdagende action RPG waarin spelers een vervallen wereld verkennen vol gevaarlijke vijanden en epische eindbazen.",

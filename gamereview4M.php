@@ -29,8 +29,6 @@
         </nav>
     </header>
 
-    <h2>PEGI 16 Game Reviews (PHP)</h2>
-
     <form method="get" action="">
         <label for="game">Kies een game:</label>
         <select id="game" name="game">
